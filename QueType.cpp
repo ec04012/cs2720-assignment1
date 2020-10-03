@@ -24,7 +24,7 @@ template <class ItemType>
 QueType<ItemType>::~QueType() {
     // Class destructor.
     delete[] items;
-    front = rear = NULL;
+    front = rear = -1;
 }
 
 template <class ItemType>
@@ -53,7 +53,7 @@ void QueType<ItemType>::enqueue(ItemType newItem) {
     // Function: Adds newItem to the rear of the queue.
     // Post: If (queue is full) FullQueue exception is thrown
     //       else newItem is at rear of queue.
-    if (isFull) {
+    if (isFull()) {
         throw FullQueue();
     }
     rear = (rear + 1) % maxQue;
@@ -72,7 +72,7 @@ void QueType<ItemType>::dequeue(ItemType& item) {
         throw EmptyQueue();
     }
     front = (front + 1) % maxQue;
-    return front;
+    item = front;
 }
 
 template <class ItemType>
@@ -96,19 +96,17 @@ int QueType<ItemType>::length() {
 }
 
 template <class ItemType>
-void QueType<ItemType>::printQueue(ofstream&) {
+void QueType<ItemType>::printQueue(ofstream& stream) {
     // displays QueueItems
-    QueType<ItemType> temp = QueType<ItemType>(maxQue);
-    ItemType item;
+    QueType<ItemType> tempQueue = QueType<ItemType>(maxQue);
+    ItemType tempItem;
     while (!isEmpty()) {
-        item = this->peek();
-        stream << item << " ";
-        this->dequeue();
-        temp.enqueue(item)
+        this->dequeue(tempItem);
+        stream << tempItem << " ";
+        tempQueue.enqueue(tempItem);
     }
-    while (!temp.isEmpty()) {
-        item = temp.peek();
-        this.dequeue();
-        this->enqueue(item)
+    while (!tempQueue.isEmpty()) {
+        tempQueue.dequeue(tempItem);
+        this->enqueue(tempItem);
     }
 }
