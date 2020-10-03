@@ -98,4 +98,17 @@ int QueType<ItemType>::length() {
 template <class ItemType>
 void QueType<ItemType>::printQueue(ofstream&) {
     // displays QueueItems
+    QueType<ItemType> temp = QueType<ItemType>(maxQue);
+    ItemType item;
+    while (!isEmpty()) {
+        item = this->peek();
+        stream << item << " ";
+        this->dequeue();
+        temp.enqueue(item)
+    }
+    while (!temp.isEmpty()) {
+        item = temp.peek();
+        this.dequeue();
+        this->enqueue(item)
+    }
 }
