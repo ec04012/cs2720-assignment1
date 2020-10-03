@@ -88,7 +88,11 @@ ItemType QueType<ItemType>::peek() {
 template <class ItemType>
 int QueType<ItemType>::length() {
     // Function: returns the number of items in the queue
-    return -1;
+    if (rear >= front) {
+        return rear - front;
+    }
+    // if rear is before front
+    return maxQue - front - 1 + rear;
 }
 
 template <class ItemType>
