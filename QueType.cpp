@@ -72,7 +72,7 @@ void QueType<ItemType>::dequeue(ItemType& item) {
         throw EmptyQueue();
     }
     front = (front + 1) % maxQue;
-    item = front;
+    item = items[front];
 }
 
 template <class ItemType>
