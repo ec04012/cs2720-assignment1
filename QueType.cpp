@@ -79,9 +79,10 @@ template <class ItemType>
 ItemType QueType<ItemType>::peek() {
     // returns the item at the front of the queue without
     // removing the item from the queue
-
-    ItemType i;
-    return i;
+    if (isEmpty()) {
+        throw EmptyQueue();
+    }
+    return items[front + 1];
 }
 
 template <class ItemType>
