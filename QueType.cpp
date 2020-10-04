@@ -82,7 +82,7 @@ ItemType QueType<ItemType>::peek() {
     if (isEmpty()) {
         throw EmptyQueue();
     }
-    return items[front + 1];
+    return items[(front + 1) % maxQue];
 }
 
 template <class ItemType>
