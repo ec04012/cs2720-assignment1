@@ -45,7 +45,7 @@ template <class ItemType>
 bool QueType<ItemType>::isFull() const {
     // Function: Determines whether the queue is full.
     // Post: Function value = (queue is full)
-    return (rear + 1) % maxQue == front;
+    return ((rear + 1) % maxQue) == front;
 }
 
 template <class ItemType>
@@ -92,7 +92,7 @@ int QueType<ItemType>::length() {
         return rear - front;
     }
     // if rear is before front
-    return maxQue - front - 1 + rear;
+    return maxQue - front + rear;
 }
 
 template <class ItemType>
