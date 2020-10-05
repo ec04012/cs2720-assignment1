@@ -106,7 +106,7 @@ void QueType<ItemType>::printQueue(ofstream& stream) {
     int length = this->length();
     for(int i = 0; i < length; i++) {
         dequeue(tempItem);
-        stream << tempItem << "  ";
+        stream << tempItem << "\t";
         enqueue(tempItem);
     }
     stream << endl;
