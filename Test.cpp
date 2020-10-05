@@ -2,13 +2,17 @@
 
 #include "QueType.cpp"
 
+/**
+ * Class to test methods for Queue and output to stdout instead of file
+ **/
+
 template <class ItemType>
 void printQue(QueType<ItemType> &q) {
     // displays QueueItems
     ItemType tempItem;
     int len = q.length();
     cout << "Queue: ";
-    for (int i = 0; i < len; i++) {
+    for(int i = 0; i < len; i++) {
         q.dequeue(tempItem);
         cout << tempItem << " ";
         q.enqueue(tempItem);
