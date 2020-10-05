@@ -53,7 +53,7 @@ void QueType<ItemType>::enqueue(ItemType newItem) {
     // Function: Adds newItem to the rear of the queue.
     // Post: If (queue is full) FullQueue exception is thrown
     //       else newItem is at rear of queue.
-    if (isFull()) {
+    if(isFull()) {
         throw QueueOverflow();
     }
     rear = (rear + 1) % maxQue;
@@ -68,7 +68,7 @@ void QueType<ItemType>::dequeue(ItemType& item) {
     //       and item is undefined
     //       else front element has been removed from queue and
     //       item is a copy of removed element.
-    if (isEmpty()) {
+    if(isEmpty()) {
         throw QueueUnderflow();
     }
     front = (front + 1) % maxQue;
@@ -79,7 +79,7 @@ template <class ItemType>
 ItemType QueType<ItemType>::peek() {
     // returns the item at the front of the queue without
     // removing the item from the queue
-    if (isEmpty()) {
+    if(isEmpty()) {
         throw QueueUnderflow();
     }
     return items[(front + 1) % maxQue];
@@ -88,7 +88,7 @@ ItemType QueType<ItemType>::peek() {
 template <class ItemType>
 int QueType<ItemType>::length() {
     // Function: returns the number of items in the queue
-    if (rear >= front) {
+    if(rear >= front) {
         return rear - front;
     }
     // if rear is before front
@@ -98,13 +98,13 @@ int QueType<ItemType>::length() {
 template <class ItemType>
 void QueType<ItemType>::printQueue(ofstream& stream) {
     // displays QueueItems
-    if (isEmpty()) {
+    if(isEmpty()) {
         stream << "Queue is Empty" << endl;
         return;
     }
     ItemType tempItem;
     int length = this->length();
-    for (int i = 0; i < length; i++) {
+    for(int i = 0; i < length; i++) {
         dequeue(tempItem);
         stream << tempItem << "  ";
         enqueue(tempItem);
