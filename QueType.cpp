@@ -98,15 +98,16 @@ int QueType<ItemType>::length() {
 template <class ItemType>
 void QueType<ItemType>::printQueue(ofstream& stream) {
     // displays QueueItems
-    QueType<ItemType> tempQueue = QueType<ItemType>(maxQue);
+    if (isEmpty()) {
+        stream << "Queue is Empty" << endl;
+        return;
+    }
     ItemType tempItem;
-    while (!isEmpty()) {
-        this->dequeue(tempItem);
-        stream << tempItem << " ";
-        tempQueue.enqueue(tempItem);
+    int length = this->length();
+    for (int i = 0; i < length; i++) {
+        dequeue(tempItem);
+        stream << tempItem << "  ";
+        enqueue(tempItem);
     }
-    while (!tempQueue.isEmpty()) {
-        tempQueue.dequeue(tempItem);
-        this->enqueue(tempItem);
-    }
+    stream << endl;
 }
