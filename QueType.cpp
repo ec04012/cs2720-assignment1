@@ -54,7 +54,7 @@ void QueType<ItemType>::enqueue(ItemType newItem) {
     // Post: If (queue is full) FullQueue exception is thrown
     //       else newItem is at rear of queue.
     if (isFull()) {
-        throw FullQueue();
+        throw QueueOverflow();
     }
     rear = (rear + 1) % maxQue;
     items[rear] = newItem;
@@ -69,7 +69,7 @@ void QueType<ItemType>::dequeue(ItemType& item) {
     //       else front element has been removed from queue and
     //       item is a copy of removed element.
     if (isEmpty()) {
-        throw EmptyQueue();
+        throw QueueUnderflow();
     }
     front = (front + 1) % maxQue;
     item = items[front];
@@ -80,7 +80,7 @@ ItemType QueType<ItemType>::peek() {
     // returns the item at the front of the queue without
     // removing the item from the queue
     if (isEmpty()) {
-        throw EmptyQueue();
+        throw QueueUnderflow();
     }
     return items[(front + 1) % maxQue];
 }
