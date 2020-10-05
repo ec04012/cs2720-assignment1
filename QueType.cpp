@@ -7,7 +7,7 @@ class FullQueue {};
 template <class ItemType>
 QueType<ItemType>::QueType() {
     // Class constructor.
-    maxQue = 500;
+    maxQue = 501;
     front = rear = 0;
     items = new ItemType[maxQue];
 }
@@ -15,7 +15,7 @@ QueType<ItemType>::QueType() {
 template <class ItemType>
 QueType<ItemType>::QueType(int max) {
     // Parameterized class constructor.
-    maxQue = max;
+    maxQue = max + 1;
     front = rear = 0;
     items = new ItemType[maxQue];
 }
